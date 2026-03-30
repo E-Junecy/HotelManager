@@ -12,7 +12,7 @@ private:
     unordered_map<int,class checkin_record> guest_record;
 
 public:
-    bool add_room(room room);
+    bool add_room(room class_room);
     bool delete_room(int room_num);
 
     vector<int> get_empty_room();
