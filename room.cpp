@@ -1,6 +1,9 @@
 #include<iostream>
 #include"room.h"
 
+double room::get_price(){
+    return price;
+}
 room_type room::get_type(){
     return type;
 }

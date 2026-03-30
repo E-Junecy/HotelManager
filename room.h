@@ -20,11 +20,13 @@ enum room_status{
 //客房基本信息
 class room{
 private:
+    double price;
     room_type type;
     room_status status;
     int room_num;
     vector<int> guest_in_house;
 public:
+    double get_price();
     room_type get_type();
     room_status get_status();
     int get_num();
