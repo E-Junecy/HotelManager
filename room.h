@@ -29,6 +29,7 @@ public:
     double get_price();
     room_type get_type();
     room_status get_status();
+    void set_status(room_status r_status);
     int get_num();
     vector<int> get_guest();
     void add_guest(int ID);
