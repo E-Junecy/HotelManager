@@ -10,9 +10,6 @@ room_type room::get_type(){
 room_status room::get_status(){
     return status;
 }
-void room::set_status(room_status r_status){
-    status=r_status;
-}
 int room::get_num(){
     return room_num;
 }
