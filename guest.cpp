@@ -52,6 +52,9 @@ void checkin_record::reserve(int guestID,int num,string in_time,string out_time)
     checkin_time=in_time;
     checkout_time=out_time;
 }
+void checkin_record::change_room(int new_room_num){
+    room_number=new_room_num;
+}
 checkin_record::checkin_record(){
     status=no_record;
     guest_ID=0;

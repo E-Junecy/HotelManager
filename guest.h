@@ -42,5 +42,6 @@ public:
     void check_in(int guestID,int num,string in_time,string out_time);
     void check_out(string out_time);
     void reserve(int guestID,int num,string in_time,string out_time);
+    void change_room(int new_room_num);
     checkin_record();
 };
