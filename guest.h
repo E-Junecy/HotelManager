@@ -40,7 +40,7 @@ public:
     string get_checkin_time();
     string get_checkout_time();
     void check_in(int guestID,int num,string in_time,string out_time);
-    void check_out();
+    void check_out(string out_time);
     void reserve(int guestID,int num,string in_time,string out_time);
     checkin_record();
 };

@@ -18,10 +18,11 @@ public:
     vector<int> get_empty_room();
     vector<int> get_empty_room(room_type type);
 
-    void guest_check_in(int ID,int room_num);
-    void guest_reserve(int ID,int room_num);
-    void guest_check_out(int ID,int room_num);
+    bool guest_check_in(int ID,int room_num, string in_time, string out_time);
+    bool guest_reserve(int ID,int room_num, string in_time, string out_time);
+    bool guest_check_out(int ID,int room_num);
+    bool guest_change_room(int ID, int old_room_num, int new_room_num);
 
-    void get_guest_info(int room_num);
-    void get_guest_stay(int room_num);
+    bool get_guest_info(int room_num);
+    bool get_guest_stay(int room_num);
 };

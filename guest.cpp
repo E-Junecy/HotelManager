@@ -41,8 +41,9 @@ void checkin_record::check_in(int guestID,int num,string in_time,string out_time
     checkin_time=in_time;
     checkout_time=out_time;
 }
-void checkin_record::check_out(){
+void checkin_record::check_out(string out_time){
     status=departure;
+    checkout_time=out_time;
 }
 void checkin_record::reserve(int guestID,int num,string in_time,string out_time){
     status=booking;
