@@ -1,5 +1,6 @@
 #include <ctime>
 #include<iostream>
+#include <fstream>
 #include"manager.h"
 
 // 获取当前系统时间，返回字符串：2026-04-05 15:30
@@ -258,4 +259,97 @@ int manager::get_guest_days(int room_num, checkin_record& record) {
     string in = record.get_checkin_time();
     string out = record.get_checkout_time();
     return calculate_days(in, out); 
+}
+
+//文件保存
+void manager::save_to_file() {
+    ofstream fout("hotel_data.txt");
+    if (!fout) return;
+
+    // 1. 保存房间
+    fout << hotel_room.size() << endl;
+    for (auto& r : hotel_room) {
+        fout << r.get_num() << " "
+             << r.get_type() << " "
+             << r.get_status() << " "
+             << r.get_price() << endl;
+    }
+
+    // 2. 保存用户
+    fout << hotel_guest.size() << endl;
+    for (auto& pair : hotel_guest) {
+        fout << pair.first << " "
+             << pair.second.get_name() << " "
+             << pair.second.get_age() << endl;
+    }
+
+    // 3. 保存记录
+    fout << guest_record.size() << endl;
+    for (auto& pair : guest_record) {
+        fout << pair.first << " "
+             << pair.second.get_room_number() << " "
+             << pair.second.get_status() << " "
+             << pair.second.get_checkin_time() << " "
+             << pair.second.get_checkout_time() << endl;
+    }
+
+    fout.close();
+}
+
+//文件读取
+void manager::load_from_file() {
+    ifstream fin("hotel_data.txt");
+    if (!fin) return;
+
+    // 清空原有数据
+    hotel_room.clear();
+    hotel_guest.clear();
+    guest_record.clear();
+
+    // 1. 读取房间
+    int room_cnt;
+    fin >> room_cnt;
+    for (int i = 0; i < room_cnt; i++) {
+        int num, type, status;
+        double price;
+        fin >> num >> type >> status >> price;
+        room r;
+        // 你需要给room类加简单设置函数 👇
+        r.set_room_num(num);
+        r.set_type((room_type)type);
+        r.set_status((room_status)status);
+        r.set_price(price);
+        hotel_room.push_back(r);
+    }
+
+    // 2. 读取用户
+    int guest_cnt;
+    fin >> guest_cnt;
+    for (int i = 0; i < guest_cnt; i++) {
+        int id, age;
+        string name;
+        fin >> id >> name >> age;
+        guest_info info;
+        info.set_ID(id);
+        info.set_name(name);
+        info.set_age(age);
+        hotel_guest[id] = info;
+    }
+
+    // 3. 读取记录
+    int record_cnt;
+    fin >> record_cnt;
+    for (int i = 0; i < record_cnt; i++) {
+        int id, room_num, status;
+        string in, out;
+        fin >> id >> room_num >> status >> in >> out;
+        checkin_record rec;
+        rec.set_room_number(room_num);
+        rec.set_status((checkin_status)status);
+        rec.set_checkin_time(in);
+        rec.set_checkout_time(out);
+        guest_record[id] = rec;
+    }
+
+    fin.close();
 }

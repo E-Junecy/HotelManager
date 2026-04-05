@@ -26,4 +26,8 @@ public:
     int get_guest_id(int room_num);
     bool get_guest_info(int room_num, guest_info& info);
     int get_guest_days(int room_num, checkin_record& record);
+
+    //本地文件储存相关数据
+    void save_to_file();
+    void load_from_file();
 };

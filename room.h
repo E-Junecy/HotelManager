@@ -35,4 +35,10 @@ public:
     void reserve_guest(int ID);
     void clear_guest();
     room::room();
+
+    //手动设置函数
+    void set_room_num(int n) { room_num = n; }
+    void set_type(room_type t) { type = t; }
+    void set_status(room_status s) { status = s; }
+    void set_price(double p) { price = p; }
 };

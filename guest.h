@@ -22,6 +22,11 @@ public:
     int get_age();
     int get_ID();
     guest_info();
+
+    //手动设置函数
+    void set_ID(int i) { ID = i; }
+    void set_name(string n) { name = n; }
+    void set_age(int a) { age = a; }
 };
 
 //用户入住信息
@@ -44,4 +49,10 @@ public:
     void reserve(int guestID,int num,string in_time,string out_time);
     void change_room(int new_room_num);
     checkin_record();
+
+    //手动设置函数
+    void set_status(checkin_status s) { status = s; }
+    void set_checkin_time(string t) { checkin_time = t; }
+    void set_checkout_time(string t) { checkout_time = t; }
+    void set_room_number(int n) { room_number = n; }
 };
